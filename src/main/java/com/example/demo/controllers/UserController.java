@@ -19,13 +19,18 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Autowired
+    public UserController(UserService service) {
+        this.service = service;
+    }
+
     @RequestMapping(method = POST)
     public void create(@RequestBody UserDto dto) throws Exception {
         this.service.create(dto);
     }
 
-    @PreAuthorize("#oauth2.hasScope('read')")
-    /*@PreAuthorize("hasRole('USER')")*/
+    /*@PreAuthorize("#oauth2.hasScope('read')")*/
+    @PreAuthorize("hasRole('USER')")
     @RequestMapping(method = GET)
     public List<User> getAll() {
         return this.service.getAll();
