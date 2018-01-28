@@ -1,11 +1,21 @@
 package com.example.demo.domain.dtos;
 
 public class UserDto {
+    private long id;
     private String name;
     private String login;
     private String email;
     private String password;
     private String token;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

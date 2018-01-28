@@ -26,9 +26,10 @@ public interface UserMapper {
     @Select("select * from user where id = #{id}")
     UserDto getById(@Param("id") long id);
 
-    @Update("update user set name=#{name}, login=#{login}, email=#{email}, updateDate=#{updateDate}" +
-            "  where id=#{id}")
-    void update(User user);
+    @Update("update user" +
+            " set name=#{user.name}, login=#{user.login}, email=#{user.email}, updateDate=#{user.updateDate}" +
+            " where id=#{user.id}")
+    void update(@Param("user") User user);
 
     @Delete("delete from user where id = #{id}")
     void delete(@Param("id") long id);

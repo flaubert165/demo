@@ -42,7 +42,7 @@ public class UserController {
         return this.service.getById(userId);
     }
 
-    @RequestMapping(method = PUT)
+    @RequestMapping(method = PUT, value = "/{userId}")
     //@PreAuthorize("hasRole('ADMIN')")
     public void update(@RequestBody UserDto dto) throws Exception {
         this.service.update(dto);

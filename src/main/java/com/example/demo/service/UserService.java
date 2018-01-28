@@ -44,7 +44,8 @@ public class UserService {
     public void update(UserDto dto) throws Exception {
 
         User user = new User(dto.getName(), dto.getLogin(), dto.getEmail(), dto.getPassword());
-
+        user.setId(dto.getId());
+        user.setUpdateDate(new Date());
         if(dto != null){
             this.repository.update(user);
         }
