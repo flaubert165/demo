@@ -29,27 +29,26 @@ public class UserController {
         this.service.create(dto);
     }
 
-    /*@PreAuthorize("#oauth2.hasScope('read')")*/
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("#oauth2.hasScope('read')")
     @RequestMapping(method = GET)
     public List<User> getAll() {
         return this.service.getAll();
     }
 
+    @PreAuthorize("#oauth2.hasScope('read')")
     @RequestMapping(method = GET, value = "/{userId}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public UserDto getById(@PathVariable long userId) {
         return this.service.getById(userId);
     }
 
+    @PreAuthorize("#oauth2.hasScope('write')")
     @RequestMapping(method = PUT, value = "/{userId}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public void update(@RequestBody UserDto dto) throws Exception {
         this.service.update(dto);
     }
 
+    @PreAuthorize("#oauth2.hasScope('write')")
     @RequestMapping(method = DELETE, value = "/{userId}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable long userId) {
         this.service.delete(userId);
     }
